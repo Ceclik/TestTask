@@ -1,11 +1,21 @@
-﻿namespace Services.InteractingWithObjectsServices
+﻿using InteractionWithObjectsScripts;
+using UnityEngine;
+
+namespace Services.InteractingWithObjectsServices
 {
     public class ObjectsThrowerService : IObjectsThrower
-
     {
-        public void ThrowObject()
+        public void ThrowObject(Transform objectTransform, Transform mainObjectsParent,
+            ActionTextHandler actionTextHandler, ref bool isObjectPicked)
         {
-            throw new System.NotImplementedException();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                objectTransform.SetParent(mainObjectsParent);
+                objectTransform.GetComponent<Rigidbody>().isKinematic = false;
+                objectTransform = null;
+                actionTextHandler.HideActionText();
+                isObjectPicked = false;
+            }
         }
     }
 }

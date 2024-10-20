@@ -11,7 +11,8 @@ namespace InteractionWithObjectsScripts
         private Camera _camera;
         private ActionTextHandler _actionTextHandler;
         private IObjectsFinder _objectsFinder;
-        private IObjectsPicker _objectsPickerService;
+        private IObjectsPicker _objectsPicker;
+        private IObjectsThrower _objectsThrower;
         private Transform _objectTransform;
 
         private bool _isObjectPicked;
@@ -19,7 +20,8 @@ namespace InteractionWithObjectsScripts
         private void Start()
         {
             _objectsFinder = new ObjectsFinderService();
-            _objectsPickerService = new ObjectsPickerService();
+            _objectsPicker = new ObjectsPickerService();
+            _objectsThrower = new ObjectsThrowerService();
             _camera = Camera.main;
             _actionTextHandler = GetComponent<ActionTextHandler>();
         }
@@ -31,20 +33,14 @@ namespace InteractionWithObjectsScripts
             
             if (!_isObjectPicked)
             {
-                _objectsPickerService.PickObject(_camera, rayDistance, _objectTransform, _actionTextHandler,
+                _objectsPicker.PickObject(_camera, rayDistance, _objectTransform, _actionTextHandler,
                     ref _isObjectPicked, transform);
             }
             else if (_isObjectPicked)
             {
                 Debug.Log($"{_objectTransform}");
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    _objectTransform.SetParent(mainObjectsParent);
-                    _objectTransform.GetComponent<Rigidbody>().isKinematic = false;
-                    _objectTransform = null;
-                    _actionTextHandler.HideActionText();
-                    _isObjectPicked = false;
-                }
+                _objectsThrower.ThrowObject(_objectTransform, mainObjectsParent, _actionTextHandler,
+                    ref _isObjectPicked);
             }
         }
     }
