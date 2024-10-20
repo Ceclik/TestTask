@@ -7,15 +7,15 @@ namespace InteractionWithObjectsScripts
     {
         [SerializeField] private float rayDistance;
         [SerializeField] private Transform mainObjectsParent;
-        
-        private Camera _camera;
         private ActionTextHandler _actionTextHandler;
+
+        private Camera _camera;
+
+        private bool _isObjectPicked;
         private IObjectsFinder _objectsFinder;
         private IObjectsPicker _objectsPicker;
         private IObjectsThrower _objectsThrower;
         private Transform _objectTransform;
-
-        private bool _isObjectPicked;
 
         private void Start()
         {
@@ -28,9 +28,9 @@ namespace InteractionWithObjectsScripts
 
         private void Update()
         {
-            if(!_isObjectPicked && !_objectsFinder.FindObject(_camera, rayDistance, out _objectTransform))
+            if (!_isObjectPicked && !_objectsFinder.FindObject(_camera, rayDistance, out _objectTransform))
                 _actionTextHandler.HideActionText();
-            
+
             if (!_isObjectPicked)
             {
                 _objectsPicker.PickObject(_camera, rayDistance, _objectTransform, _actionTextHandler,
@@ -38,7 +38,7 @@ namespace InteractionWithObjectsScripts
             }
             else if (_isObjectPicked)
             {
-                Debug.Log($"{_objectTransform}");
+                Debug.Log(_objectTransform);
                 _objectsThrower.ThrowObject(_objectTransform, mainObjectsParent, _actionTextHandler,
                     ref _isObjectPicked);
             }
