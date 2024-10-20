@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Services
+namespace Services.MovingServices
 {
     public class CharacterMovingService : ICharacterMover
     {

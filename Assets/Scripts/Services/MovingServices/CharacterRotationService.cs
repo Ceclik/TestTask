@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Services
+namespace Services.MovingServices
 {
     public class CharacterRotationService : ICharacterRotator
     {
