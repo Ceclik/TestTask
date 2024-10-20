@@ -24,17 +24,6 @@ namespace MovingScripts
         private void Update()
         {
             _characterRotator.Rotate(mouseSensitivity, _rigidbody, ref _verticalRotation, cameraTransform);
-            
-            /*float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
-            Quaternion deltaRotationY = Quaternion.Euler(0f, mouseX, 0f);
-            _rigidbody.MoveRotation(_rigidbody.rotation * deltaRotationY);
-
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
-            _verticalRotation -= mouseY;
-
-            _verticalRotation = Mathf.Clamp(_verticalRotation, -90f, 90f);
-
-            cameraTransform.localRotation = Quaternion.Euler(_verticalRotation, 0f, 0f);*/
         }
     }
 }
