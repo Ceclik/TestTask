@@ -27,5 +27,11 @@ namespace InteractionWithObjectsScripts
             _actionTextHandler.HandleActionText(actionText, isObjectPicked);
             IsTextShown = true;
         }
+
+        public void HideActionText()
+        {
+            actionText.gameObject.SetActive(false);
+            IsTextShown = false;
+        }
     }
 }

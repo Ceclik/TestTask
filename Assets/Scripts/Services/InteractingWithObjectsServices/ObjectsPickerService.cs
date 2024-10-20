@@ -17,6 +17,7 @@ namespace Services.InteractingWithObjectsServices
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     objectTransform.SetParent(characterTransform);
+                    objectTransform.GetComponent<Rigidbody>().isKinematic = true;
                     objectTransform.position = new Vector3(objectTransform.position.x, camera.transform.position.y,
                         objectTransform.position.z);
                     isObjectPicked = true;
