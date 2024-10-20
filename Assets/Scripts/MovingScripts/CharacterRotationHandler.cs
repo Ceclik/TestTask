@@ -1,5 +1,4 @@
-﻿using Services;
-using Services.MovingServices;
+﻿using Services.MovingServices;
 using UnityEngine;
 
 namespace MovingScripts
@@ -8,11 +7,11 @@ namespace MovingScripts
     {
         [SerializeField] private float mouseSensitivity = 100f;
         [SerializeField] private Transform cameraTransform;
-        
-        private Rigidbody _rigidbody;
-        private float _verticalRotation = 0f;
         private ICharacterRotator _characterRotator;
-        
+
+        private Rigidbody _rigidbody;
+        private float _verticalRotation;
+
 
         private void Start()
         {

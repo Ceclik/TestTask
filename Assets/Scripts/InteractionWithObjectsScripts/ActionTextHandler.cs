@@ -6,13 +6,12 @@ namespace InteractionWithObjectsScripts
 {
     public class ActionTextHandler : MonoBehaviour
     {
-        
         [SerializeField] private TextMeshProUGUI actionText;
+        private IActionTextHandler _actionTextHandler;
+
+        private Camera _camera;
 
         public TextMeshProUGUI ActionText => actionText;
-        
-        private Camera _camera;
-        private IActionTextHandler _actionTextHandler;
 
         public bool IsTextShown { get; private set; }
 

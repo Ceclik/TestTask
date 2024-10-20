@@ -6,7 +6,7 @@ namespace Services.MovingServices
     {
         public void Move(Rigidbody rigidbody, KeyCode key, float movingSpeed)
         {
-            Vector3 movement = Vector3.zero;
+            var movement = Vector3.zero;
 
             // Двигаем персонажа относительно его локальных осей
             switch (key)

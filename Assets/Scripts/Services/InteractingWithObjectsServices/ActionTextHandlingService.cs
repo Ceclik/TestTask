@@ -5,7 +5,7 @@ namespace Services.InteractingWithObjectsServices
     public class ActionTextHandlingService : IActionTextHandler
 
     {
-        public void HandleActionText(TextMeshProUGUI actionText , bool isObjectPicked)
+        public void HandleActionText(TextMeshProUGUI actionText, bool isObjectPicked)
         {
             if (isObjectPicked)
             {
